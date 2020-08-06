@@ -2,7 +2,7 @@
 D3 clicker
 Current Version: 1.51
 
-Download exe [here](https://github.com/Akayaakuma/Noct-Helper/releases/tag/1.0) 
+Download exe [here](https://github.com/Akayaakuma/Noct-Helper/releases) 
 
 D3 Town stuff Only in 1920x1080 resolution. Key spam works on all resolution
 
