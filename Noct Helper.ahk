@@ -9,7 +9,7 @@ SendMode Input
 
 ;------------ VERSION ------------
 
-Global Version := "1.1"
+Global Version := "1.2"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -154,7 +154,7 @@ Gui Add, Text, x12 y370 w50 +0x200, Start/Stop
 Gui Add, DropDownList, vEnableDisableHK x92 y345 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
 Gui Add, DropDownList, vStartStopHK x92 y370 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
 
-Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
+;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
 
 Gui Add, StatusBar,, by Noct, NotNoct  | Version: %Version%
 Gui Show, %gui_position% h520 w440, D3 Noct Helper
@@ -299,13 +299,13 @@ if Toggler
 
     gosub, Action7
 
-SetTimer, Action1, % Toggler ? %Time1% : "off"
-SetTimer, Action2, % Toggler ? %Time2% : "off"
-SetTimer, Action3, % Toggler ? %Time3% : "off"
-SetTimer, Action4, % Toggler ? %Time4% : "off"
-SetTimer, Action5, % Toggler ? %Time5% : "off"
-SetTimer, Action6, % Toggler ? %Time6% : "off"
-SetTimer, Action7, % Toggler ? %Time7% : "off"
+SetTimer, Action1, % Toggler ? Time1 : "off"
+SetTimer, Action2, % Toggler ? Time2 : "off"
+SetTimer, Action3, % Toggler ? Time3 : "off"
+SetTimer, Action4, % Toggler ? Time4 : "off"
+SetTimer, Action5, % Toggler ? Time5 : "off"
+SetTimer, Action6, % Toggler ? Time6 : "off"
+SetTimer, Action7, % Toggler ? Time7 : "off"
 return
 
 Action1:
@@ -390,18 +390,17 @@ EnableDisable:
     Return
 }
 
-;GAMBLE
 Kadala:
 {
     if (Kadak){
-Loop, 30
+        Loop, 30
 {
 Send {RButton}
 }
 Send {ESC}
 sleep 1000
-    }
 return
+}
 }
 
 ;gemup
@@ -764,9 +763,6 @@ sleep 1000
 }
 return
 }
-
-ESC::
-ExitApp
 
 ; ---------------- UPDATE NOTIFY -------------------
 
