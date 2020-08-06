@@ -9,7 +9,7 @@ SendMode Input
 
 ;------------ VERSION ------------
 
-Global Version := "1.0"
+Global Version := "1.1"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
