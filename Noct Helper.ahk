@@ -6,10 +6,11 @@
 SetBatchLines -1
 SendMode Input
 #Persistent
+#IfWinActive, ahk_class D3 Main Window Class
 
 ;------------ VERSION ------------
 
-Global Version := "1.2"
+Global Version := "1.3"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -50,6 +51,9 @@ global H5
 global H6
 global H7
 
+global PotHK
+global Pot
+
 
 ;--------------Iniread------------
 iniRead, gui_position, C:\ProgramData\settings.ini, window position, gui_position, Center
@@ -88,8 +92,8 @@ iniRead, H5, C:\ProgramData\settings.ini, Aktiv, H5, 5
 iniRead, H6, C:\ProgramData\settings.ini, Aktiv, H6, 6
 iniRead, H7, C:\ProgramData\settings.ini, Aktiv, H7, 7
 
-
-
+iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK, Q
+iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -107,7 +111,7 @@ HotKey, %StartStopHK%, Off
 Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
-Gui Add, GroupBox, x5 y225 w326 h115, Town
+Gui Add, GroupBox, x5 y225 w326 h145, Town
 
 Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
 Gui, Add, CheckBox, x12 y39 w100 h30 vH2 Checked%H2%, 2
@@ -118,11 +122,12 @@ Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmaus
 Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
 
 Gui, Add, CheckBox, x12 y239 w100 h30 vSchak Checked%Schak%, Schmied
-Gui, Add, CheckBox, x12 y269 w100 h30 vUrsak Checked%Ursak%, Urshi
+Gui, Add, CheckBox, x12 y272 w100 h30 vUrsak Checked%Ursak%, Urshi
 Gui, Add, CheckBox, x12 y299 w80 h30 vKadak Checked%Kadak%, Kadala
-Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alles Spalten Schrotten
+Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alle Spalten Schrotten
+Gui, Add, CheckBox, x12 y335 w100 h30 vPot Checked%Pot%, Auto Pot
 
-Gui Add, CheckBox, vHotKeysActive x230 y345 w120 h22 +Disabled, Hotkeys Active
+Gui Add, CheckBox, vHotKeysActive x230 y395 w120 h22 +Disabled, Hotkeys Active
 
 Gui, Add, DropDownList, v1HK x112 y19 w100  +Uppercase, %Hotkeys%|%1HK%||
 Gui, Add, DropDownList, v2HK x112 y49 w100  +Uppercase, %Hotkeys%|%2HK%||
@@ -134,9 +139,11 @@ Gui, Add, DropDownList, vmoveHK x112 y199 w100  +Uppercase, %Hotkeys%|%moveHK%||
 Gui, Add, DropDownList, vSchmiedHK x112 y249 w100  +Uppercase, %Hotkeys%|%SchmiedHK%||
 Gui, Add, DropDownList, vUrshiHK x112 y279 w100  +Uppercase, %Hotkeys%|%UrshiHK%||
 Gui, Add, DropDownList, vKadalaHK x112 y309 w100  +Uppercase, %Hotkeys%|%KadalaHK%||
+Gui, Add, DropDownList, vPotHK x112 y340 w100  +Uppercase, %Hotkeys%|%PotHK%||
 
 Gui, Add, Button,gSave x12 y465 w100 h30 , save
-Gui, Add, Button,ginfo x112 y465 w100 h30 , Info
+Gui, Add, Button,ginfo x212 y465 w100 h30 , Info
+Gui, Add, Button,gbutton1 x112 y465 w100 h30 , Reload
 
 Gui, Add, Edit, Limit5 Number vTime1 x222 y22 w40 h15 , %Time1%
 Gui, Add, Edit, Limit5 Number vTime2 x222 y52 w40 h15 , %Time2%
@@ -149,10 +156,10 @@ Gui, Add, Edit, Limit5 Number vTime7 x222 y202 w40 h15 , %Time7%
 Gui, Add, Radio, x342 y9 w100 h20 +Checked, Profil 1
 Gui, Add, Radio, x342 y29 w100 h20 , Profil 2
 
-Gui Add, Text, x12 y350 w50 +0x200, Enable/Disable
-Gui Add, Text, x12 y370 w50 +0x200, Start/Stop
-Gui Add, DropDownList, vEnableDisableHK x92 y345 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
-Gui Add, DropDownList, vStartStopHK x92 y370 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
+Gui Add, Text, x12 y400 w50 +0x200, Enable/Disable
+Gui Add, Text, x12 y420 w50 +0x200, Start/Stop
+Gui Add, DropDownList, vEnableDisableHK x92 y395 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
+Gui Add, DropDownList, vStartStopHK x92 y420 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
 
 ;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
 
@@ -199,6 +206,8 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, H5
     GuiControlGet, H6
     GuiControlGet, H7
+    GuiControlGet, PotHK
+    GuiControlGet, Pot
 
     IniWrite, %1HK%, C:\ProgramData\settings.ini, Keys, 1HK
     IniWrite, %2HK%, C:\ProgramData\settings.ini, Keys, 2HK
@@ -234,12 +243,14 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     IniWrite, %H6%, C:\ProgramData\settings.ini, Aktiv, H6
     IniWrite, %H7%, C:\ProgramData\settings.ini, Aktiv, H7
 
+    IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK
+    IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot
+
     IniWrite, %EnableDisableHK%, C:\ProgramData\settings.ini, Settings, EnableDisableHK
     IniWrite, %StartStopHK%, C:\ProgramData\settings.ini, Settings, StartStopHK
 
     HotKey, %StartStopHK%, StartStop
-    HotKey, %EnableDisableHK%, EnableDisable
-    
+    HotKey, %EnableDisableHK%, EnableDisable        
 }
 
 GuiClose:
@@ -254,7 +265,10 @@ info:
     return
 }
 
-
+button1:
+{
+    Reload
+}
 
 StartStop:
 {
@@ -281,6 +295,9 @@ StartStop:
     GuiControlGet, LmausHK
     GuiControlGet, RmausHK
     GuiControlGet, MoveHK
+
+    GuiControlGet,PotHk
+    GuiControlGet,Pot
 
     Toggler := !Toggler
 if Toggler
@@ -386,8 +403,31 @@ EnableDisable:
         HotKey, %UrshiHK%, On
         HotKey, %SchmiedHK%, On
         GuiControl,, HotKeysActive, 1
+        autopot()
     }
     Return
+}
+
+autopot(){
+        if (Pot){
+            Toggler := !Toggler
+if Toggler
+	gosub, Actionpot
+SetTimer, Actionpot, % Toggler ? 100 : "off"
+return
+
+Actionpot:
+PixelSearch, , , 51, 124, 51, 124, 0x000000, 30, Fast
+if (ErrorLevel = 0)
+{
+      PixelSearch,,, 1060, 1005, 1060, 1005, 0x271601, 30, Fast
+    if ErrorLevel = 0
+{
+  Send, {%PotHK%}
+}
+}
+return
+}
 }
 
 Kadala:
