@@ -10,7 +10,7 @@ SendMode Input
 
 ;------------ VERSION ------------
 
-Global Version := "1.5"
+Global Version := "1.51"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -55,8 +55,6 @@ global Profil1
 global Profil2
 global Profil3
 global Profil4
-
-
 ;--------------Iniread------------
 iniRead, Profil1, C:\ProgramData\settings.ini, Profil, Profil1, 1
 iniRead, Profil2, C:\ProgramData\settings.ini, Profil, Profil2, 0
@@ -499,11 +497,9 @@ if (Profil4){
     IniWrite, %EnableDisableHK%, C:\ProgramData\settings.ini, Settings, EnableDisableHK
     IniWrite, %StartStopHK%, C:\ProgramData\settings.ini, Settings, StartStopHK
 }
-
-
     HotKey, %StartStopHK%, StartStop
     HotKey, %EnableDisableHK%, EnableDisable    
-    HotKey, %TownHK%, Town     
+    HotKey, %TownHK%, Town    
 }
 
 GuiClose:
@@ -529,6 +525,7 @@ button1:
     GuiControlGet, Profil3
     GuiControlGet, Profil4
 
+    WinGetPos, Xpos, Ypos,,, D3 Noct Helper
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
     IniWrite, %Profil3%, C:\ProgramData\settings.ini, Profil, Profil3
@@ -660,21 +657,29 @@ EnableDisable:
         HotKey, %StartStopHK%, Off
         HotKey, %TownHK%, Off
         GuiControl,, HotKeysActive, 0
+        reload
+        
     }
     Else
     {
         HotKey, %StartStopHK%, On
         HotKey, %TownHK%, On
-        GuiControl,, HotKeysActive, 1
-        autopot()
+        AutoPot()
+        GuiControl,, HotKeysActive, 1        
     }
     Return
 }
 
-autopot(){
-        if (Pot){
-            Toggler := !Toggler
-if Toggler
+AutoPot()
+{
+    Toggler := !Toggler
+
+    GuiControlGet, Pot
+    GuiControlGet,  HotKeysActive
+
+        if (Pot){               
+
+    if Toggler
 	gosub, Actionpot
 SetTimer, Actionpot, % Toggler ? 100 : "off"
 return
@@ -709,7 +714,7 @@ if (ErrorLevel = 0)
 }
 }
 }
-}
+}          
 return
 }
 }
