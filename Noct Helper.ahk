@@ -1,4 +1,4 @@
-﻿;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+;SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 ;SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
 #NoEnv
@@ -258,7 +258,113 @@ info:
 
 StartStop:
 {
-    MsgBox rip
+    GuiControlGet, Time1
+    GuiControlGet, Time2
+    GuiControlGet, Time3
+    GuiControlGet, Time4
+    GuiControlGet, Time5
+    GuiControlGet, Time6
+    GuiControlGet, Time7
+
+    GuiControlGet, H1
+    GuiControlGet, H2
+    GuiControlGet, H3
+    GuiControlGet, H4
+    GuiControlGet, H5
+    GuiControlGet, H6
+    GuiControlGet, H7
+
+    GuiControlGet, 1HK
+    GuiControlGet, 2HK
+    GuiControlGet, 3HK
+    GuiControlGet, 4HK
+    GuiControlGet, LmausHK
+    GuiControlGet, RmausHK
+    GuiControlGet, MoveHK
+
+    Toggler := !Toggler
+if Toggler
+    
+    gosub, Action1
+  
+    gosub, Action2
+
+    gosub, Action3
+
+    gosub, Action4
+
+    gosub, Action5
+
+    gosub, Action6
+
+    gosub, Action7
+
+SetTimer, Action1, % Toggler ? %Time1% : "off"
+SetTimer, Action2, % Toggler ? %Time2% : "off"
+SetTimer, Action3, % Toggler ? %Time3% : "off"
+SetTimer, Action4, % Toggler ? %Time4% : "off"
+SetTimer, Action5, % Toggler ? %Time5% : "off"
+SetTimer, Action6, % Toggler ? %Time6% : "off"
+SetTimer, Action7, % Toggler ? %Time7% : "off"
+return
+
+Action1:
+{
+    if (H1){
+        send {%1HK%}
+    }
+    return
+}
+
+Action2:
+{
+    if (H2){
+    send {%2HK%}
+    }
+    return
+}
+
+Action3:
+{
+    if (H3){
+    send {%3HK%}
+    }
+    return
+}
+
+Action4:
+{
+    if (H4){
+    send {%4HK%}
+    }
+    return
+}
+
+Action5:
+{
+    if (H5){
+    send {Shift Down}
+    send {%LmausHK%}
+    send {Shift Up}
+    }
+    return
+}
+
+Action6:
+{
+    if (H6){
+    send {%RmausHK%}
+    }
+    return
+}
+
+Action7:
+{
+    if (H7){
+    send {%MoveHK%}
+    }
+    return
+}
     return
 }
 
@@ -291,8 +397,6 @@ Kadala:
 Loop, 30
 {
 Send {RButton}
-mousemove, 105, 640
-mousemove, 274, 547
 }
 Send {ESC}
 sleep 1000
@@ -660,6 +764,9 @@ sleep 1000
 }
 return
 }
+
+ESC::
+ExitApp
 
 ; ---------------- UPDATE NOTIFY -------------------
 
