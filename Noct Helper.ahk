@@ -10,7 +10,7 @@ SendMode Input
 
 ;------------ VERSION ------------
 
-Global Version := "1.4"
+Global Version := "1.5"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -22,16 +22,13 @@ global LmausHK
 global RmausHK
 global MoveHK
 
-global SchmiedHK
-global UrshiHK
-global KadalaHK
+global TownHk
+Global Combi
+
 
 global EnableDisableHK
 global StartStopHK
 
-global Schak
-global Ursak
-global Kadak
 global Alle
 global Gamble
 
@@ -78,13 +75,9 @@ IniRead, LmausHK,  C:\ProgramData\settings.ini, Keys, LmausHK, LButton
 IniRead, RmausHK,  C:\ProgramData\settings.ini, Keys, RmausHK, RButton
 IniRead, MoveHK,  C:\ProgramData\settings.ini, Keys, moveHK, h
 
-IniRead, SchmiedHK,  C:\ProgramData\settings.ini, Town, SchmiedHK, F2
-IniRead, UrshiHK,  C:\ProgramData\settings.ini, Town, UrshiHK, F3
-IniRead, KadalaHK,  C:\ProgramData\settings.ini, Town, KadalaHK, F4
+IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK, D
+IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi, 1
 
-iniRead, Schak, C:\ProgramData\settings.ini, Town, Schak, 0
-iniRead, Ursak, C:\ProgramData\settings.ini, Town, Ursak, 0
-iniRead, Kadak, C:\ProgramData\settings.ini, Town, Kadak, 0
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle, 0
 iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble, 1-H Weapon 
 
@@ -122,13 +115,9 @@ IniRead, LmausHK,  C:\ProgramData\settings.ini, Keys, LmausHK2, LButton
 IniRead, RmausHK,  C:\ProgramData\settings.ini, Keys, RmausHK2, RButton
 IniRead, MoveHK,  C:\ProgramData\settings.ini, Keys, moveHK2, h
 
-IniRead, SchmiedHK,  C:\ProgramData\settings.ini, Town, SchmiedHK2, F2
-IniRead, UrshiHK,  C:\ProgramData\settings.ini, Town, UrshiHK2, F3
-IniRead, KadalaHK,  C:\ProgramData\settings.ini, Town, KadalaHK2, F4
+IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK2, D
+IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi2, 1
 
-iniRead, Schak, C:\ProgramData\settings.ini, Town, Schak2, 0
-iniRead, Ursak, C:\ProgramData\settings.ini, Town, Ursak2, 0
-iniRead, Kadak, C:\ProgramData\settings.ini, Town, Kadak2, 0
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle2, 0
 iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble2, 1-H Weapon 
 
@@ -166,13 +155,9 @@ IniRead, LmausHK,  C:\ProgramData\settings.ini, Keys, LmausHK3, LButton
 IniRead, RmausHK,  C:\ProgramData\settings.ini, Keys, RmausHK3, RButton
 IniRead, MoveHK,  C:\ProgramData\settings.ini, Keys, moveHK3, h
 
-IniRead, SchmiedHK,  C:\ProgramData\settings.ini, Town, SchmiedHK3, F2
-IniRead, UrshiHK,  C:\ProgramData\settings.ini, Town, UrshiHK3, F3
-IniRead, KadalaHK,  C:\ProgramData\settings.ini, Town, KadalaHK3, F4
+IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK3, D
+IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi3, 1
 
-iniRead, Schak, C:\ProgramData\settings.ini, Town, Schak3, 0
-iniRead, Ursak, C:\ProgramData\settings.ini, Town, Ursak3, 0
-iniRead, Kadak, C:\ProgramData\settings.ini, Town, Kadak3, 0
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle3, 0
 iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble3, 1-H Weapon 
 
@@ -210,13 +195,9 @@ IniRead, LmausHK,  C:\ProgramData\settings.ini, Keys, LmausHK4, LButton
 IniRead, RmausHK,  C:\ProgramData\settings.ini, Keys, RmausHK4, RButton
 IniRead, MoveHK,  C:\ProgramData\settings.ini, Keys, moveHK4, h
 
-IniRead, SchmiedHK,  C:\ProgramData\settings.ini, Town, SchmiedHK4, F2
-IniRead, UrshiHK,  C:\ProgramData\settings.ini, Town, UrshiHK4, F3
-IniRead, KadalaHK,  C:\ProgramData\settings.ini, Town, KadalaHK4, F4
+IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK4, D
+IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi4, 1
 
-iniRead, Schak, C:\ProgramData\settings.ini, Town, Schak4, 0
-iniRead, Ursak, C:\ProgramData\settings.ini, Town, Ursak4, 0
-iniRead, Kadak, C:\ProgramData\settings.ini, Town, Kadak4, 0
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle4, 0
 iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble4, 1-H Weapon 
 
@@ -243,20 +224,18 @@ IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableH
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
 }
 
-HotKey, %SchmiedHK%, Schmied
-HotKey, %UrshiHK%, Urshi
-HotKey, %KadalaHK%, Kadala
-
 HotKey, %StartStopHK%, StartStop
 HotKey, %EnableDisableHK%, EnableDisable
 HotKey, %StartStopHK%, Off
+HotKey, %TownHK%, Town
+HotKey, %TownHK%, off
 
 ;---------------------------------
 
 Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
-Gui Add, GroupBox, x5 y225 w326 h145, Town
+Gui Add, GroupBox, x5 y230 w325 h85, Town
 
 Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
 Gui, Add, CheckBox, x12 y39 w100 h30 vH2 Checked%H2%, 2
@@ -266,13 +245,11 @@ Gui, Add, CheckBox, x12 y129 w100 h30 vH5 Checked%H5%, Lmaus
 Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmaus
 Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
 
-Gui, Add, CheckBox, x12 y239 w100 h30 vSchak Checked%Schak%, Schmied
-Gui, Add, CheckBox, x12 y272 w100 h30 vUrsak Checked%Ursak%, Urshi
-Gui, Add, CheckBox, x12 y299 w80 h30 vKadak Checked%Kadak%, Kadala
 Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alle Spalten Schrotten
-Gui, Add, CheckBox, x12 y335 w100 h30 vPot Checked%Pot%, Auto Pot
+Gui, Add, CheckBox, x12 y275 w100 h30 vPot Checked%Pot%, Auto Pot
+Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 
-Gui Add, CheckBox, vHotKeysActive x230 y395 w120 h22 +Disabled, Hotkeys Active
+Gui Add, CheckBox, vHotKeysActive x230 y411 w120 h22 +Disabled, Hotkeys Active
 
 Gui, Add, DropDownList, v1HK x112 y19 w100  +Uppercase, %Hotkeys%|%1HK%||
 Gui, Add, DropDownList, v2HK x112 y49 w100  +Uppercase, %Hotkeys%|%2HK%||
@@ -281,10 +258,8 @@ Gui, Add, DropDownList, v4HK x112 y109 w100  +Uppercase, %Hotkeys%|%4HK%||
 Gui, Add, DropDownList, vLmausHK x112 y139 w100  +Uppercase, %Hotkeys%|%LmausHK%||
 Gui, Add, DropDownList, vRmausHK x112 y169 w100  +Uppercase, %Hotkeys%|%RmausHK%||
 Gui, Add, DropDownList, vmoveHK x112 y199 w100  +Uppercase, %Hotkeys%|%moveHK%||
-Gui, Add, DropDownList, vSchmiedHK x112 y249 w100  +Uppercase, %Hotkeys%|%SchmiedHK%||
-Gui, Add, DropDownList, vUrshiHK x112 y279 w100  +Uppercase, %Hotkeys%|%UrshiHK%||
-Gui, Add, DropDownList, vKadalaHK x112 y309 w100  +Uppercase, %Hotkeys%|%KadalaHK%||
-Gui, Add, DropDownList, vPotHK x112 y340 w100  +Uppercase, %Hotkeys%|%PotHK%||
+Gui, Add, DropDownList, vPotHK x112 y280 w100  +Uppercase, %Hotkeys%|%PotHK%||
+Gui, Add, DropDownList, vTownHK x112 y250 w100 +Uppercase, %Hotkeys%|%TownHK%||
 
 Gui, Add, Button,gSave x12 y465 w100 h30 , Save
 Gui, Add, Button,ginfo x212 y465 w100 h30 , Info
@@ -303,10 +278,10 @@ Gui, Add, Radio, vprofil2 x342 y29 w100 h20 Checked%Profil2% , Profil 2
 Gui, Add, Radio, vprofil3 x342 y49 w100 h20 Checked%Profil3% , Profil 3
 Gui, Add, Radio, vprofil4 x342 y69 w100 h20 Checked%Profil4% , Profil 4
 
-Gui Add, Text, x12 y400 w50 +0x200, Enable/Disable
-Gui Add, Text, x12 y420 w50 +0x200, Start/Stop
-Gui Add, DropDownList, vEnableDisableHK x92 y395 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
-Gui Add, DropDownList, vStartStopHK x92 y420 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
+Gui Add, Text, x12 y411 w50 +0x200, Enable/Disable
+Gui Add, Text, x12 y436 w50 +0x200, Start/Stop
+Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
+Gui Add, DropDownList, vStartStopHK x92 y435 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
 
 ;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
 
@@ -326,15 +301,10 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, RmausHK
     GuiControlGet, MoveHK
 
-    GuiControlGet, SchmiedHK
-    GuiControlGet, UrshiHK
-    GuiControlGet, KadalaHK
     GuiControlGet, EnableDisableHK
     GuiControlGet, StartStopHK
+    GuiControlGet, TownHK
     
-    GuiControlGet, Schak
-    GuiControlGet, Ursak
-    GuiControlGet, Kadak
     GuiControlGet, Alle
     GuiControlGet, Gamble
     
@@ -355,6 +325,7 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, H7
     GuiControlGet, PotHK
     GuiControlGet, Pot
+    GuiControlGet, Combi
 
     GuiControlGet, Profil1
     GuiControlGet, Profil2
@@ -371,15 +342,12 @@ if (Profil1)
     IniWrite, %RmausHK%, C:\ProgramData\settings.ini, Keys, RmausHK
     IniWrite, %MoveHK%, C:\ProgramData\settings.ini, Keys, MoveHK
 
-    IniWrite, %SchmiedHK%, C:\ProgramData\settings.ini, Town, SchmiedHK
-    IniWrite, %UrshiHK%, C:\ProgramData\settings.ini, Town, UrshiHK
-    IniWrite, %KadalaHK%, C:\ProgramData\settings.ini, Town, KadalaHK
+    IniWrite, %TownHK%, C:\ProgramData\settings.ini, Town, TownHK
+    IniWrite, %Combi%, C:\ProgramData\settings.ini, Town, Combi
 
-    IniWrite, %Schak%, C:\ProgramData\settings.ini, Town, Schak
-    IniWrite, %Ursak%, C:\ProgramData\settings.ini, Town, Ursak
-    IniWrite, %Kadak%, C:\ProgramData\settings.ini, Town, Kadak
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble
+    
 
     IniWrite, %Time1%, C:\ProgramData\settings.ini, Time, Time1
     IniWrite, %Time2%, C:\ProgramData\settings.ini, Time, Time2
@@ -415,13 +383,9 @@ if (Profil2){
     IniWrite, %RmausHK%, C:\ProgramData\settings.ini, Keys, RmausHK2
     IniWrite, %MoveHK%, C:\ProgramData\settings.ini, Keys, MoveHK2
 
-    IniWrite, %SchmiedHK%, C:\ProgramData\settings.ini, Town, SchmiedHK2
-    IniWrite, %UrshiHK%, C:\ProgramData\settings.ini, Town, UrshiHK2
-    IniWrite, %KadalaHK%, C:\ProgramData\settings.ini, Town, KadalaHK2
+    IniWrite, %TownHK%, C:\ProgramData\settings.ini, Town, TownHK2
+    IniWrite, %Combi%, C:\ProgramData\settings.ini, Town, Combi2
 
-    IniWrite, %Schak%, C:\ProgramData\settings.ini, Town, Schak2
-    IniWrite, %Ursak%, C:\ProgramData\settings.ini, Town, Ursak2
-    IniWrite, %Kadak%, C:\ProgramData\settings.ini, Town, Kadak2
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle2
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble2
 
@@ -460,13 +424,9 @@ if (Profil3)
     IniWrite, %RmausHK%, C:\ProgramData\settings.ini, Keys, RmausHK3
     IniWrite, %MoveHK%, C:\ProgramData\settings.ini, Keys, MoveHK3
 
-    IniWrite, %SchmiedHK%, C:\ProgramData\settings.ini, Town, SchmiedHK3
-    IniWrite, %UrshiHK%, C:\ProgramData\settings.ini, Town, UrshiHK3
-    IniWrite, %KadalaHK%, C:\ProgramData\settings.ini, Town, KadalaHK3
+    IniWrite, %TownHK%, C:\ProgramData\settings.ini, Town, TownHK3
+    IniWrite, %Combi%, C:\ProgramData\settings.ini, Town, Combi3
 
-    IniWrite, %Schak%, C:\ProgramData\settings.ini, Town, Schak3
-    IniWrite, %Ursak%, C:\ProgramData\settings.ini, Town, Ursak3
-    IniWrite, %Kadak%, C:\ProgramData\settings.ini, Town, Kadak3
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle3
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble3
 
@@ -506,13 +466,9 @@ if (Profil4){
     IniWrite, %RmausHK%, C:\ProgramData\settings.ini, Keys, RmausHK4
     IniWrite, %MoveHK%, C:\ProgramData\settings.ini, Keys, MoveHK4
 
-    IniWrite, %SchmiedHK%, C:\ProgramData\settings.ini, Town, SchmiedHK4
-    IniWrite, %UrshiHK%, C:\ProgramData\settings.ini, Town, UrshiHK4
-    IniWrite, %KadalaHK%, C:\ProgramData\settings.ini, Town, KadalaHK4
+    IniWrite, %TownHK%, C:\ProgramData\settings.ini, Town, TownHK4
+    IniWrite, %Combi%, C:\ProgramData\settings.ini, Town, Combi4
 
-    IniWrite, %Schak%, C:\ProgramData\settings.ini, Town, Schak4
-    IniWrite, %Ursak%, C:\ProgramData\settings.ini, Town, Ursak4
-    IniWrite, %Kadak%, C:\ProgramData\settings.ini, Town, Kadak4
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle4
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble4
 
@@ -546,7 +502,8 @@ if (Profil4){
 
 
     HotKey, %StartStopHK%, StartStop
-    HotKey, %EnableDisableHK%, EnableDisable        
+    HotKey, %EnableDisableHK%, EnableDisable    
+    HotKey, %TownHK%, Town     
 }
 
 GuiClose:
@@ -701,17 +658,13 @@ EnableDisable:
     If(HotKeysActive)
     {
         HotKey, %StartStopHK%, Off
-        HotKey, %KadalaHK%, Off
-        HotKey, %UrshiHK%, Off
-        HotKey, %SchmiedHK%, Off
+        HotKey, %TownHK%, Off
         GuiControl,, HotKeysActive, 0
     }
     Else
     {
         HotKey, %StartStopHK%, On
-        HotKey, %KadalaHK%, On
-        HotKey, %UrshiHK%, On
-        HotKey, %SchmiedHK%, On
+        HotKey, %TownHK%, On
         GuiControl,, HotKeysActive, 1
         autopot()
     }
@@ -725,8 +678,27 @@ if Toggler
 	gosub, Actionpot
 SetTimer, Actionpot, % Toggler ? 100 : "off"
 return
-
+;----------------------Pot-------------------------------------
 Actionpot:
+    PixelSearch,,, 289, 61, 289, 61, 0x974614, 10, Fast
+    if ErrorLevel = 0
+{
+    ImWeg1:=1
+}else{
+    ImWeg1:=0
+}
+PixelSearch,,, 234, 60, 234, 60, 0x651543, 10, Fast
+    if ErrorLevel = 0
+{
+    ImWeg2:=1
+}else{
+    ImWeg2:=0
+}
+
+if (ImWeg1 = 0)
+{
+    if (ImWeg2 = 0)
+    {
 PixelSearch, , , 51, 124, 51, 124, 0x000000, 30, Fast
 if (ErrorLevel = 0)
 {
@@ -736,27 +708,41 @@ if (ErrorLevel = 0)
   Send, {%PotHK%}
 }
 }
+}
+}
 return
 }
 }
+;----------------------------Town------------------------------------
+Town:
+GuiControlGet, TownHK
+GuiControlGet, Combi
+GuiControlGet, Alle
 
-Kadala:
+PixelSearch,,, 289, 61, 289, 61, 0x974614, 10, Fast
+    if ErrorLevel = 0
 {
-    if (Kadak){
-        Loop, 30
+      PixelSearch,,, 456, 611, 456, 611, 0x000D38, 10, Fast
+    if ErrorLevel = 0
 {
-Send {RButton}
+  Urshi:= 1
+  Schmied:= 0
+  Kadala:= 0
+}else{
+  Urshi:= 0
+  Schmied:= 1
+  Kadala:= 0
 }
-Send {ESC}
-sleep 1000
-return
 }
-}
-
-;gemup
-Urshi:
+PixelSearch,,, 234, 60, 234, 60, 0x651543, 10, Fast
+    if ErrorLevel = 0
 {
-    if (Ursak = 1){
+  Urshi:= 0
+  Schmied:= 0
+  Kadala:= 1
+}
+if (Urshi = 1)
+{
 mousemove, 105, 640
 sleep 30
 click left
@@ -773,16 +759,23 @@ click left
 sleep 1610
 click left
 sleep 1000
-    }
 return
 }
-
-;SALVAGE
-Schmied:
+if (Kadala = 1)
 {
-    if (Schak = 1){
-
-Critical
+        ;MsgBox 1
+    Loop, 30
+    {
+        Send {RButton}
+    }
+    Send {ESC}
+    sleep 1000
+    Kadala:= 0
+    return
+}
+if (Schmied = 1)
+{
+  Critical
 MouseGetPos x, y
 MouseMove 512, 482
 send {LButton}
@@ -1112,10 +1105,7 @@ send {esc}
 sleep 1000
 }
 return
-}
-
 ; ---------------- UPDATE NOTIFY -------------------
-
 CheckNewVersion()
 {
     UrlDownloadToFile, https://raw.githubusercontent.com/Akayaakuma/Noct-Helper/master/README.md, CheckVers.txt
@@ -1148,6 +1138,5 @@ CheckNewVersion()
         Return
     IfMsgBox No
         Return
-    run % "https://github.com/Akayaakuma/Noct-Helper"    
-    
+    run % "https://github.com/Akayaakuma/Noct-Helper"      
 }
