@@ -10,7 +10,7 @@ SendMode Input
 
 ;------------ VERSION ------------
 
-Global Version := "1.51"
+Global Version := "1.52"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -514,7 +514,7 @@ WinGetPos, Xpos, Ypos,,, D3 Noct Helper
 
 info:
 {
-    MsgBox, Taste im spiel `nTastenbelegung `nZeit in ms `nProfiel auswahl führ meherere optionen für später geplant `nKadala/Schmied/Urshi normaler clicker
+    MsgBox, Taste im spiel `nTastenbelegung `nZeit in ms `nProfiel auswahl führ meherere optionen `nKadala/Schmied/Urshi normaler clicker
     return
 }
 
@@ -685,25 +685,71 @@ SetTimer, Actionpot, % Toggler ? 100 : "off"
 return
 ;----------------------Pot-------------------------------------
 Actionpot:
-    PixelSearch,,, 289, 61, 289, 61, 0x974614, 10, Fast
+    PixelSearch,,, 289, 61, 289, 61, 0x974614, 5, Fast ;schmied/urshi/juwel
     if ErrorLevel = 0
 {
     ImWeg1:=1
 }else{
     ImWeg1:=0
 }
-PixelSearch,,, 234, 60, 234, 60, 0x651543, 10, Fast
+PixelSearch,,, 234, 60, 234, 60, 0x651543, 5, Fast ;kadala
     if ErrorLevel = 0
 {
     ImWeg2:=1
 }else{
     ImWeg2:=0
 }
+PixelSearch,,, 289, 61, 289, 61, 0x5F9515, 5, Fast ;kiste
+    if ErrorLevel = 0
+{
+    ImWeg3:=1
+}else{
+    ImWeg3:=0
+}
+PixelSearch,,, 289, 61, 289, 61, 0x062059, 5, Fast ;begleiter
+    if ErrorLevel = 0
+{
+    ImWeg4:=1
+}else{
+    ImWeg4:=0
+}
+PixelSearch,,, 289, 61, 289, 61, 0x101216, 5, Fast ;Wüfel
+    if ErrorLevel = 0
+{
+    ImWeg5:=1
+}else{
+    ImWeg5:=0
+}
+PixelSearch,,, 289, 61, 289, 61, 0x080252, 5, Fast ;armory
+    if ErrorLevel = 0
+{
+    ImWeg6:=1
+}else{
+    ImWeg6:=0
+}
+PixelSearch,,, 289, 61, 289, 61, 0x802A69, 5, Fast ;pylon
+    if ErrorLevel = 0
+{
+    ImWeg7:=1
+}else{
+    ImWeg7:=0
+}
 
 if (ImWeg1 = 0)
 {
     if (ImWeg2 = 0)
     {
+        if (ImWeg3 = 0)
+        {
+            if (ImWeg4 = 0)
+            {
+                If (ImWeg5 = 0)
+                {
+                    If (ImWeg6 = 0)
+                    {
+                        if (ImWeg7 = 0)
+                        {
+
 PixelSearch, , , 51, 124, 51, 124, 0x000000, 30, Fast
 if (ErrorLevel = 0)
 {
@@ -713,8 +759,13 @@ if (ErrorLevel = 0)
   Send, {%PotHK%}
 }
 }
+                        }
+                    }
+                }          
+            }             
+        }
+    }
 }
-}          
 return
 }
 }
