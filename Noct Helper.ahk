@@ -7,10 +7,8 @@ SetBatchLines -1
 SendMode Input
 #Persistent
 #IfWinActive, ahk_class D3 Main Window Class
-
 ;------------ VERSION ------------
-
-Global Version := "1.52"
+Global Version := "1.53"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -101,6 +99,7 @@ iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot, 1
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
 }
+
 if (Profil2)
 {
 iniRead, gui_position, C:\ProgramData\settings.ini, window position, gui_position, Center
@@ -141,6 +140,7 @@ iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot2, 1
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
 }
+
 if (Profil3)
 {
 iniRead, gui_position, C:\ProgramData\settings.ini, window position, gui_position, Center
@@ -181,6 +181,7 @@ iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot3, 1
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
 }
+
 if (Profil4)
 {
 iniRead, gui_position, C:\ProgramData\settings.ini, window position, gui_position, Center
@@ -227,9 +228,7 @@ HotKey, %EnableDisableHK%, EnableDisable
 HotKey, %StartStopHK%, Off
 HotKey, %TownHK%, Town
 HotKey, %TownHK%, off
-
 ;---------------------------------
-
 Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
@@ -239,15 +238,15 @@ Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
 Gui, Add, CheckBox, x12 y39 w100 h30 vH2 Checked%H2%, 2
 Gui, Add, CheckBox, x12 y69 w100 h30 vH3 Checked%H3%, 3
 Gui, Add, CheckBox, x12 y99 w100 h30 vH4 Checked%H4%, 4
-Gui, Add, CheckBox, x12 y129 w100 h30 vH5 Checked%H5%, Lmaus
-Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmaus
+Gui, Add, CheckBox, x12 y129 w100 h30 vH5 Checked%H5%, Lmouse
+Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmouse
 Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
 
 Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alle Spalten Schrotten
 Gui, Add, CheckBox, x12 y275 w100 h30 vPot Checked%Pot%, Auto Pot
 Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 
-Gui Add, CheckBox, vHotKeysActive x230 y411 w120 h22 +Disabled, Hotkeys Active
+Gui Add, CheckBox, vHotKeysActive x220 y411 w120 h22 +Disabled, Hotkeys Active
 
 Gui, Add, DropDownList, v1HK x112 y19 w100  +Uppercase, %Hotkeys%|%1HK%||
 Gui, Add, DropDownList, v2HK x112 y49 w100  +Uppercase, %Hotkeys%|%2HK%||
@@ -262,6 +261,8 @@ Gui, Add, DropDownList, vTownHK x112 y250 w100 +Uppercase, %Hotkeys%|%TownHK%||
 Gui, Add, Button,gSave x12 y465 w100 h30 , Save
 Gui, Add, Button,ginfo x212 y465 w100 h30 , Info
 Gui, Add, Button,gbutton1 x112 y465 w100 h30 , Reload
+Gui, Add, Button,gbutton2 x312 y465 w100 h30 , Donate
+Gui, Add, Button,gbutton3 x312 y430 w100 h30 , Discord
 
 Gui, Add, Edit, Limit5 Number vTime1 x222 y22 w40 h15 , %Time1%
 Gui, Add, Edit, Limit5 Number vTime2 x222 y52 w40 h15 , %Time2%
@@ -280,10 +281,8 @@ Gui Add, Text, x12 y411 w50 +0x200, Enable/Disable
 Gui Add, Text, x12 y436 w50 +0x200, Start/Stop
 Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
 Gui Add, DropDownList, vStartStopHK x92 y435 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
-
 ;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
-
-Gui Add, StatusBar,, by Noct, NotNoct  | Version: %Version%
+Gui Add, StatusBar,, by Noct| Version: %Version%
 Gui Show, %gui_position% h520 w440, D3 Noct Helper
 return
 
@@ -509,7 +508,6 @@ WinGetPos, Xpos, Ypos,,, D3 Noct Helper
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
     IniWrite, %Profil3%, C:\ProgramData\settings.ini, Profil, Profil3
     IniWrite, %Profil4%, C:\ProgramData\settings.ini, Profil, Profil4
-   
    ExitApp
 
 info:
@@ -532,6 +530,18 @@ button1:
     IniWrite, %Profil4%, C:\ProgramData\settings.ini, Profil, Profil4
     sleep 100
     Reload
+}
+
+button2:
+{
+    run % "https://www.paypal.com/paypalme/Akayaakuma"
+    return
+}
+
+button3:
+{
+    run % "https://discord.gg/ad4bcJZ"
+    return
 }
 
 StartStop:
@@ -567,17 +577,11 @@ StartStop:
 if Toggler
     
     gosub, Action1
-  
     gosub, Action2
-
     gosub, Action3
-
     gosub, Action4
-
     gosub, Action5
-
     gosub, Action6
-
     gosub, Action7
 
 SetTimer, Action1, % Toggler ? Time1 : "off"
@@ -658,7 +662,6 @@ EnableDisable:
         HotKey, %TownHK%, Off
         GuiControl,, HotKeysActive, 0
         reload
-        
     }
     Else
     {
