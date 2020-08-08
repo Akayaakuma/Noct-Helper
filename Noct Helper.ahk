@@ -8,7 +8,7 @@ SendMode Input
 #Persistent
 #IfWinActive, ahk_class D3 Main Window Class
 ;------------ VERSION ------------
-Global Version := "1.53"
+Global Version := "1.54"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -23,7 +23,6 @@ global MoveHK
 global TownHk
 Global Combi
 
-
 global EnableDisableHK
 global StartStopHK
 
@@ -37,6 +36,7 @@ global Time4
 global Time5
 global Time6
 global Time7
+global Time8
 
 global H1
 global H2
@@ -45,6 +45,7 @@ global H4
 global H5
 global H6
 global H7
+global H8
 
 global PotHK
 global Pot
@@ -84,6 +85,7 @@ iniRead, Time4, C:\ProgramData\settings.ini, Time, Time4, 400
 iniRead, Time5, C:\ProgramData\settings.ini, Time, Time5, 500
 iniRead, Time6, C:\ProgramData\settings.ini, Time, Time6, 600
 iniRead, Time7, C:\ProgramData\settings.ini, Time, Time7, 700
+iniRead, Time8, C:\ProgramData\settings.ini, Time, Time8, 1000
 
 iniRead, H1, C:\ProgramData\settings.ini, Aktiv, H1, 1
 iniRead, H2, C:\ProgramData\settings.ini, Aktiv, H2, 2
@@ -92,6 +94,7 @@ iniRead, H4, C:\ProgramData\settings.ini, Aktiv, H4, 4
 iniRead, H5, C:\ProgramData\settings.ini, Aktiv, H5, 5
 iniRead, H6, C:\ProgramData\settings.ini, Aktiv, H6, 6
 iniRead, H7, C:\ProgramData\settings.ini, Aktiv, H7, 7
+iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H8, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot, 1
@@ -125,6 +128,7 @@ iniRead, Time4, C:\ProgramData\settings.ini, Time, Time42, 400
 iniRead, Time5, C:\ProgramData\settings.ini, Time, Time52, 500
 iniRead, Time6, C:\ProgramData\settings.ini, Time, Time62, 600
 iniRead, Time7, C:\ProgramData\settings.ini, Time, Time72, 700
+iniRead, Time8, C:\ProgramData\settings.ini, Time, Time82, 1000
 
 iniRead, H1, C:\ProgramData\settings.ini, Aktiv, H12, 1
 iniRead, H2, C:\ProgramData\settings.ini, Aktiv, H22, 2
@@ -133,6 +137,7 @@ iniRead, H4, C:\ProgramData\settings.ini, Aktiv, H42, 4
 iniRead, H5, C:\ProgramData\settings.ini, Aktiv, H52, 5
 iniRead, H6, C:\ProgramData\settings.ini, Aktiv, H62, 6
 iniRead, H7, C:\ProgramData\settings.ini, Aktiv, H72, 7
+iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H82, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK2, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot2, 1
@@ -166,6 +171,7 @@ iniRead, Time4, C:\ProgramData\settings.ini, Time, Time43, 400
 iniRead, Time5, C:\ProgramData\settings.ini, Time, Time53, 500
 iniRead, Time6, C:\ProgramData\settings.ini, Time, Time63, 600
 iniRead, Time7, C:\ProgramData\settings.ini, Time, Time73, 700
+iniRead, Time8, C:\ProgramData\settings.ini, Time, Time83, 1000
 
 iniRead, H1, C:\ProgramData\settings.ini, Aktiv, H13, 1
 iniRead, H2, C:\ProgramData\settings.ini, Aktiv, H23, 2
@@ -174,6 +180,7 @@ iniRead, H4, C:\ProgramData\settings.ini, Aktiv, H43, 4
 iniRead, H5, C:\ProgramData\settings.ini, Aktiv, H53, 5
 iniRead, H6, C:\ProgramData\settings.ini, Aktiv, H63, 6
 iniRead, H7, C:\ProgramData\settings.ini, Aktiv, H73, 7
+iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H83, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK3, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot3, 1
@@ -207,6 +214,7 @@ iniRead, Time4, C:\ProgramData\settings.ini, Time, Time44, 400
 iniRead, Time5, C:\ProgramData\settings.ini, Time, Time54, 500
 iniRead, Time6, C:\ProgramData\settings.ini, Time, Time64, 600
 iniRead, Time7, C:\ProgramData\settings.ini, Time, Time74, 700
+iniRead, Time8, C:\ProgramData\settings.ini, Time, Time84, 1000
 
 iniRead, H1, C:\ProgramData\settings.ini, Aktiv, H14, 1
 iniRead, H2, C:\ProgramData\settings.ini, Aktiv, H24, 2
@@ -215,6 +223,7 @@ iniRead, H4, C:\ProgramData\settings.ini, Aktiv, H44, 4
 iniRead, H5, C:\ProgramData\settings.ini, Aktiv, H54, 5
 iniRead, H6, C:\ProgramData\settings.ini, Aktiv, H64, 6
 iniRead, H7, C:\ProgramData\settings.ini, Aktiv, H74, 7
+iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H84, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK4, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot4, 1
@@ -233,6 +242,7 @@ Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
 Gui Add, GroupBox, x5 y230 w325 h85, Town
+Gui Add, GroupBox, x285 y137 w150 h85, Specials
 
 Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
 Gui, Add, CheckBox, x12 y39 w100 h30 vH2 Checked%H2%, 2
@@ -241,6 +251,7 @@ Gui, Add, CheckBox, x12 y99 w100 h30 vH4 Checked%H4%, 4
 Gui, Add, CheckBox, x12 y129 w100 h30 vH5 Checked%H5%, Lmouse
 Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmouse
 Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
+Gui, Add, CheckBox, x290 y150 w100 h30 vH8 Checked%H8%, If Right then left
 
 Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alle Spalten Schrotten
 Gui, Add, CheckBox, x12 y275 w100 h30 vPot Checked%Pot%, Auto Pot
@@ -271,6 +282,7 @@ Gui, Add, Edit, Limit5 Number vTime4 x222 y112 w40 h15 , %Time4%
 Gui, Add, Edit, Limit5 Number vTime5 x222 y142 w40 h15 , %Time5%
 Gui, Add, Edit, Limit5 Number vTime6 x222 y172 w40 h15 , %Time6%
 Gui, Add, Edit, Limit5 Number vTime7 x222 y202 w40 h15 , %Time7%
+Gui, Add, Edit, Limit5 Number vTime8 x390 y157 w40 h15 , %Time8%
 
 Gui, Add, Radio, vprofil1 x342 y9 w100 h20 Checked%Profil1% , Profil 1
 Gui, Add, Radio, vprofil2 x342 y29 w100 h20 Checked%Profil2% , Profil 2
@@ -312,6 +324,7 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, Time5
     GuiControlGet, Time6
     GuiControlGet, Time7
+    GuiControlGet, Time8
 
     GuiControlGet, H1
     GuiControlGet, H2
@@ -320,6 +333,8 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, H5
     GuiControlGet, H6
     GuiControlGet, H7
+    GuiControlGet, H8
+
     GuiControlGet, PotHK
     GuiControlGet, Pot
     GuiControlGet, Combi
@@ -353,6 +368,7 @@ if (Profil1)
     IniWrite, %Time5%, C:\ProgramData\settings.ini, Time, Time5
     IniWrite, %Time6%, C:\ProgramData\settings.ini, Time, Time6
     IniWrite, %Time7%, C:\ProgramData\settings.ini, Time, Time7
+    IniWrite, %Time8%, C:\ProgramData\settings.ini, Time, Time8
 
     IniWrite, %H1%, C:\ProgramData\settings.ini, Aktiv, H1
     IniWrite, %H2%, C:\ProgramData\settings.ini, Aktiv, H2
@@ -361,6 +377,7 @@ if (Profil1)
     IniWrite, %H5%, C:\ProgramData\settings.ini, Aktiv, H5
     IniWrite, %H6%, C:\ProgramData\settings.ini, Aktiv, H6
     IniWrite, %H7%, C:\ProgramData\settings.ini, Aktiv, H7
+    IniWrite, %H8%, C:\ProgramData\settings.ini, Aktiv, H8
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot
@@ -393,6 +410,7 @@ if (Profil2){
     IniWrite, %Time5%, C:\ProgramData\settings.ini, Time, Time52
     IniWrite, %Time6%, C:\ProgramData\settings.ini, Time, Time62
     IniWrite, %Time7%, C:\ProgramData\settings.ini, Time, Time72
+    IniWrite, %Time8%, C:\ProgramData\settings.ini, Time, Time82
 
     IniWrite, %H1%, C:\ProgramData\settings.ini, Aktiv, H12
     IniWrite, %H2%, C:\ProgramData\settings.ini, Aktiv, H22
@@ -401,6 +419,7 @@ if (Profil2){
     IniWrite, %H5%, C:\ProgramData\settings.ini, Aktiv, H52
     IniWrite, %H6%, C:\ProgramData\settings.ini, Aktiv, H62
     IniWrite, %H7%, C:\ProgramData\settings.ini, Aktiv, H72
+    IniWrite, %H8%, C:\ProgramData\settings.ini, Aktiv, H82
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK2
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot2
@@ -434,6 +453,7 @@ if (Profil3)
     IniWrite, %Time5%, C:\ProgramData\settings.ini, Time, Time53
     IniWrite, %Time6%, C:\ProgramData\settings.ini, Time, Time63
     IniWrite, %Time7%, C:\ProgramData\settings.ini, Time, Time73
+    IniWrite, %Time8%, C:\ProgramData\settings.ini, Time, Time83
 
     IniWrite, %H1%, C:\ProgramData\settings.ini, Aktiv, H13
     IniWrite, %H2%, C:\ProgramData\settings.ini, Aktiv, H23
@@ -442,6 +462,7 @@ if (Profil3)
     IniWrite, %H5%, C:\ProgramData\settings.ini, Aktiv, H53
     IniWrite, %H6%, C:\ProgramData\settings.ini, Aktiv, H63
     IniWrite, %H7%, C:\ProgramData\settings.ini, Aktiv, H73
+    IniWrite, %H8%, C:\ProgramData\settings.ini, Aktiv, H83
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK3
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot3
@@ -476,6 +497,7 @@ if (Profil4){
     IniWrite, %Time5%, C:\ProgramData\settings.ini, Time, Time54
     IniWrite, %Time6%, C:\ProgramData\settings.ini, Time, Time64
     IniWrite, %Time7%, C:\ProgramData\settings.ini, Time, Time74
+    IniWrite, %Time8%, C:\ProgramData\settings.ini, Time, Time84
 
     IniWrite, %H1%, C:\ProgramData\settings.ini, Aktiv, H14
     IniWrite, %H2%, C:\ProgramData\settings.ini, Aktiv, H24
@@ -484,6 +506,7 @@ if (Profil4){
     IniWrite, %H5%, C:\ProgramData\settings.ini, Aktiv, H54
     IniWrite, %H6%, C:\ProgramData\settings.ini, Aktiv, H64
     IniWrite, %H7%, C:\ProgramData\settings.ini, Aktiv, H74
+    IniWrite, %H8%, C:\ProgramData\settings.ini, Aktiv, H84
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK4
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot4
@@ -512,7 +535,7 @@ WinGetPos, Xpos, Ypos,,, D3 Noct Helper
 
 info:
 {
-    MsgBox, Taste im spiel `nTastenbelegung `nZeit in ms `nProfiel auswahl führ meherere optionen `nKadala/Schmied/Urshi normaler clicker
+    MsgBox, In Game Belegung -> Eigene Taste -> Zeit in Ms`n`nProfil wahl für verschidene configs`n`nTown combi Key:`nKadala: kauft Item auf das die maus zeigt`nSchmied macht das inventar leer Wenn Hacken gesetzt auch die 1. Spalte`nUrshi 1. gem 4 mal aufwerten+ townport`nAutopot aktiv wenn skript Enable und Checked
     return
 }
 
@@ -553,6 +576,7 @@ StartStop:
     GuiControlGet, Time5
     GuiControlGet, Time6
     GuiControlGet, Time7
+    GuiControlGet, Time8
 
     GuiControlGet, H1
     GuiControlGet, H2
@@ -561,6 +585,7 @@ StartStop:
     GuiControlGet, H5
     GuiControlGet, H6
     GuiControlGet, H7
+    GuiControlGet, H8
 
     GuiControlGet, 1HK
     GuiControlGet, 2HK
@@ -584,6 +609,9 @@ if Toggler
     gosub, Action6
     gosub, Action7
 
+    gosub, Action8
+
+
 SetTimer, Action1, % Toggler ? Time1 : "off"
 SetTimer, Action2, % Toggler ? Time2 : "off"
 SetTimer, Action3, % Toggler ? Time3 : "off"
@@ -591,6 +619,7 @@ SetTimer, Action4, % Toggler ? Time4 : "off"
 SetTimer, Action5, % Toggler ? Time5 : "off"
 SetTimer, Action6, % Toggler ? Time6 : "off"
 SetTimer, Action7, % Toggler ? Time7 : "off"
+SetTimer, Action8, % Toggler ? Time8 : "off"
 return
 
 Action1:
@@ -650,6 +679,20 @@ Action7:
     }
     return
 }
+
+Action8:
+{
+    if (H8){
+    while GetKeyState("RButton","P")
+    {
+
+        send {LButton}
+        sleep 100
+
+    }
+    }      
+    return
+}
     return
 }
 
@@ -661,6 +704,8 @@ EnableDisable:
         HotKey, %StartStopHK%, Off
         HotKey, %TownHK%, Off
         GuiControl,, HotKeysActive, 0
+        SoundBeep, 800, 150
+        SoundBeep, 800, 150
         reload
     }
     Else
@@ -668,7 +713,8 @@ EnableDisable:
         HotKey, %StartStopHK%, On
         HotKey, %TownHK%, On
         AutoPot()
-        GuiControl,, HotKeysActive, 1        
+        GuiControl,, HotKeysActive, 1    
+        SoundBeep, 800, 250  
     }
     Return
 }
@@ -753,7 +799,7 @@ if (ImWeg1 = 0)
                         if (ImWeg7 = 0)
                         {
 
-PixelSearch, , , 51, 124, 51, 124, 0x000000, 30, Fast
+PixelSearch, , , 55, 124, 55, 124, 0x000000, 10, Fast
 if (ErrorLevel = 0)
 {
       PixelSearch,,, 1060, 1005, 1060, 1005, 0x271601, 30, Fast
