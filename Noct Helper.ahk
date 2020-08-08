@@ -8,7 +8,7 @@ SendMode Input
 #Persistent
 #IfWinActive, ahk_class D3 Main Window Class
 ;------------ VERSION ------------
-Global Version := "1.54"
+Global Version := "1.541"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -259,15 +259,15 @@ Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 
 Gui Add, CheckBox, vHotKeysActive x220 y411 w120 h22 +Disabled, Hotkeys Active
 
-Gui, Add, DropDownList, v1HK x112 y19 w100  +Uppercase, %Hotkeys%|%1HK%||
-Gui, Add, DropDownList, v2HK x112 y49 w100  +Uppercase, %Hotkeys%|%2HK%||
-Gui, Add, DropDownList, v3HK x112 y79 w100  +Uppercase, %Hotkeys%|%3HK%||
-Gui, Add, DropDownList, v4HK x112 y109 w100  +Uppercase, %Hotkeys%|%4HK%||
-Gui, Add, DropDownList, vLmausHK x112 y139 w100  +Uppercase, %Hotkeys%|%LmausHK%||
-Gui, Add, DropDownList, vRmausHK x112 y169 w100  +Uppercase, %Hotkeys%|%RmausHK%||
-Gui, Add, DropDownList, vmoveHK x112 y199 w100  +Uppercase, %Hotkeys%|%moveHK%||
-Gui, Add, DropDownList, vPotHK x112 y280 w100  +Uppercase, %Hotkeys%|%PotHK%||
-Gui, Add, DropDownList, vTownHK x112 y250 w100 +Uppercase, %Hotkeys%|%TownHK%||
+Gui, Add, DropDownList, v1HK x112 y19 w100  , %Hotkeys%|%1HK%||
+Gui, Add, DropDownList, v2HK x112 y49 w100  , %Hotkeys%|%2HK%||
+Gui, Add, DropDownList, v3HK x112 y79 w100  , %Hotkeys%|%3HK%||
+Gui, Add, DropDownList, v4HK x112 y109 w100  , %Hotkeys%|%4HK%||
+Gui, Add, DropDownList, vLmausHK x112 y139 w100  , %Hotkeys%|%LmausHK%||
+Gui, Add, DropDownList, vRmausHK x112 y169 w100  , %Hotkeys%|%RmausHK%||
+Gui, Add, DropDownList, vmoveHK x112 y199 w100  , %Hotkeys%|%moveHK%||
+Gui, Add, DropDownList, vPotHK x112 y280 w100  , %Hotkeys%|%PotHK%||
+Gui, Add, DropDownList, vTownHK x112 y250 w100 , %Hotkeys%|%TownHK%||
 
 Gui, Add, Button,gSave x12 y465 w100 h30 , Save
 Gui, Add, Button,ginfo x212 y465 w100 h30 , Info
@@ -291,8 +291,8 @@ Gui, Add, Radio, vprofil4 x342 y69 w100 h20 Checked%Profil4% , Profil 4
 
 Gui Add, Text, x12 y411 w50 +0x200, Enable/Disable
 Gui Add, Text, x12 y436 w50 +0x200, Start/Stop
-Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  +Uppercase, %Hotkeys%|%EnableDisableHK%||
-Gui Add, DropDownList, vStartStopHK x92 y435 w120  +Uppercase, %Hotkeys%|%StartStopHK%||
+Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  , %Hotkeys%|%EnableDisableHK%||
+Gui Add, DropDownList, vStartStopHK x92 y435 w120  , %Hotkeys%|%StartStopHK%||
 ;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
 Gui Add, StatusBar,, by Noct| Version: %Version%
 Gui Show, %gui_position% h520 w440, D3 Noct Helper
@@ -608,7 +608,6 @@ if Toggler
     gosub, Action5
     gosub, Action6
     gosub, Action7
-
     gosub, Action8
 
 
@@ -685,10 +684,8 @@ Action8:
     if (H8){
     while GetKeyState("RButton","P")
     {
-
         send {LButton}
         sleep 100
-
     }
     }      
     return
