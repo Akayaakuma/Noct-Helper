@@ -8,7 +8,7 @@ SendMode Input
 #Persistent
 #IfWinActive, ahk_class D3 Main Window Class
 ;------------ VERSION ------------
-Global Version := "1.541"
+Global Version := "1.6"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
@@ -237,6 +237,9 @@ HotKey, %EnableDisableHK%, EnableDisable
 HotKey, %StartStopHK%, Off
 HotKey, %TownHK%, Town
 HotKey, %TownHK%, off
+
+HotKey, t, off
+HotKey, Esc, off
 ;---------------------------------
 Gui -MinimizeBox -MaximizeBox
 
@@ -599,8 +602,15 @@ StartStop:
     GuiControlGet,Pot
 
     Toggler := !Toggler
-if Toggler
-    
+
+    HotKey, t, off
+    HotKey, Esc, off
+
+if Toggler {
+
+    HotKey, t, on
+    HotKey, Esc, on
+
     gosub, Action1
     gosub, Action2
     gosub, Action3
@@ -610,6 +620,7 @@ if Toggler
     gosub, Action7
     gosub, Action8
 
+}
 
 SetTimer, Action1, % Toggler ? Time1 : "off"
 SetTimer, Action2, % Toggler ? Time2 : "off"
@@ -619,8 +630,33 @@ SetTimer, Action5, % Toggler ? Time5 : "off"
 SetTimer, Action6, % Toggler ? Time6 : "off"
 SetTimer, Action7, % Toggler ? Time7 : "off"
 SetTimer, Action8, % Toggler ? Time8 : "off"
-return
 
+~ESC::
+{
+    send {%1HK% Up}
+    send {%2HK% Up} 
+    send {%3HK% Up}  
+    send {%4HK% Up}
+    send {%RmausHK% Up}
+    send {%RmausHK% Up} 
+    HotKey, Esc, off
+    gosub StartStop
+    return
+}
+~t::
+{
+    send {%1HK% Up}
+    send {%2HK% Up} 
+    send {%3HK% Up}  
+    send {%4HK% Up}
+    send {%RmausHK% Up}
+    send {%RmausHK% Up} 
+    HotKey, t, off
+    gosub StartStop
+    return
+}
+return
+    
 Action1:
 {
     if (H1){
@@ -628,7 +664,6 @@ Action1:
     }
     return
 }
-
 Action2:
 {
     if (H2){
@@ -636,7 +671,6 @@ Action2:
     }
     return
 }
-
 Action3:
 {
     if (H3){
@@ -644,7 +678,6 @@ Action3:
     }
     return
 }
-
 Action4:
 {
     if (H4){
@@ -652,7 +685,6 @@ Action4:
     }
     return
 }
-
 Action5:
 {
     if (H5){
@@ -662,7 +694,6 @@ Action5:
     }
     return
 }
-
 Action6:
 {
     if (H6){
@@ -670,7 +701,6 @@ Action6:
     }
     return
 }
-
 Action7:
 {
     if (H7){
@@ -678,7 +708,6 @@ Action7:
     }
     return
 }
-
 Action8:
 {
     if (H8){
@@ -703,7 +732,11 @@ EnableDisable:
         GuiControl,, HotKeysActive, 0
         SoundBeep, 800, 150
         SoundBeep, 800, 150
-        reload
+
+        WinGetPos, Xpos, Ypos,,, D3 Noct Helper
+        IniWrite, x %Xpos% y %Ypos%, C:\ProgramData\settings.ini, window position, gui_position
+
+        Reload
     }
     Else
     {
@@ -716,18 +749,19 @@ EnableDisable:
     Return
 }
 
+
 AutoPot()
 {
-    Toggler := !Toggler
+    Toggler2 := !Toggler2
 
     GuiControlGet, Pot
     GuiControlGet,  HotKeysActive
 
         if (Pot){               
 
-    if Toggler
+    if Toggler2
 	gosub, Actionpot
-SetTimer, Actionpot, % Toggler ? 100 : "off"
+SetTimer, Actionpot, % Toggler2 ? 100 : "off"
 return
 ;----------------------Pot-------------------------------------
 Actionpot:
@@ -861,6 +895,7 @@ click left
 sleep 1610
 click left
 sleep 1000
+Urshi = 0
 return
 }
 if (Kadala = 1)
@@ -1205,6 +1240,7 @@ click left 242 590
 MouseMove %x%, %y%
 send {esc}
 sleep 1000
+Schmied = 0
 }
 return
 ; ---------------- UPDATE NOTIFY -------------------
