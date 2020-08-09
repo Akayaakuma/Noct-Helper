@@ -28,6 +28,7 @@ global StartStopHK
 
 global Alle
 global Gamble
+global Emp
 
 global Time1
 global Time2
@@ -98,6 +99,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H8, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot, 1
+iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -141,6 +143,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H82, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK2, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot2, 1
+iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp2, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -184,6 +187,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H83, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK3, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot3, 1
+iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp4, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -227,6 +231,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H84, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK4, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot4, 1
+iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp4, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -244,7 +249,7 @@ HotKey, Esc, off
 Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
-Gui Add, GroupBox, x5 y230 w325 h85, Town
+Gui Add, GroupBox, x5 y230 w440 h85, Town
 Gui Add, GroupBox, x285 y137 w150 h85, Specials
 
 Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
@@ -256,11 +261,13 @@ Gui, Add, CheckBox, x12 y159 w100 h30 vH6 Checked%H6%, Rmouse
 Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
 Gui, Add, CheckBox, x290 y150 w100 h30 vH8 Checked%H8%, If Right then left
 
-Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, Alle Spalten Schrotten
+Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, add First column
 Gui, Add, CheckBox, x12 y275 w100 h30 vPot Checked%Pot%, Auto Pot
 Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 
-Gui Add, CheckBox, vHotKeysActive x220 y411 w120 h22 +Disabled, Hotkeys Active
+Gui, Add, CheckBox, x332 y245 w100 h30 vEmp  Checked%Emp%, Empowered Grift
+
+Gui Add, CheckBox, vHotKeysActive x220 y409 w120 h22 +Disabled, Hotkeys Active
 
 Gui, Add, DropDownList, v1HK x112 y19 w100  , %Hotkeys%|%1HK%||
 Gui, Add, DropDownList, v2HK x112 y49 w100  , %Hotkeys%|%2HK%||
@@ -298,7 +305,7 @@ Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  , %Hotkeys%|%EnableDisabl
 Gui Add, DropDownList, vStartStopHK x92 y435 w120  , %Hotkeys%|%StartStopHK%||
 ;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
 Gui Add, StatusBar,, by Noct| Version: %Version%
-Gui Show, %gui_position% h520 w440, D3 Noct Helper
+Gui Show, %gui_position% h520 w455, D3 Noct Helper
 return
 
 Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
@@ -319,6 +326,7 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     
     GuiControlGet, Alle
     GuiControlGet, Gamble
+    GuiControlGet, Emp
     
     GuiControlGet, Time1
     GuiControlGet, Time2
@@ -384,6 +392,7 @@ if (Profil1)
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot
+    IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -426,6 +435,7 @@ if (Profil2){
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK2
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot2
+    IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp2
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -469,6 +479,7 @@ if (Profil3)
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK3
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot3
+    IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp3
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -513,6 +524,7 @@ if (Profil4){
 
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK4
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot4
+    IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp4
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -653,6 +665,8 @@ SetTimer, Action8, % Toggler ? Time8 : "off"
     send {%RmausHK% Up} 
     HotKey, t, off
     gosub StartStop
+    sleep 1000
+    send {t}
     return
 }
 return
@@ -814,6 +828,13 @@ PixelSearch,,, 289, 61, 289, 61, 0x802A69, 5, Fast ;pylon
 }else{
     ImWeg7:=0
 }
+PixelSearch,,, 43, 50, 43, 50, 0x020829, 5, Fast ;Kiste
+    if ErrorLevel = 0
+{
+  ImWeg8:=1
+}else{
+    ImWeg8:=0
+}
 
 if (ImWeg1 = 0)
 {
@@ -829,6 +850,8 @@ if (ImWeg1 = 0)
                     {
                         if (ImWeg7 = 0)
                         {
+                            if (ImWeg8 = 0)
+                            {
 
 PixelSearch, , , 55, 124, 55, 124, 0x000000, 10, Fast
 if (ErrorLevel = 0)
@@ -839,6 +862,7 @@ if (ErrorLevel = 0)
   Send, {%PotHK%}
 }
 }
+                            }
                         }
                     }
                 }          
@@ -854,29 +878,41 @@ Town:
 GuiControlGet, TownHK
 GuiControlGet, Combi
 GuiControlGet, Alle
+GuiControlGet, Emp
 
-PixelSearch,,, 289, 61, 289, 61, 0x974614, 10, Fast
+PixelSearch,,, 289, 61, 289, 61, 0x974614, 5, Fast
     if ErrorLevel = 0
 {
-      PixelSearch,,, 456, 611, 456, 611, 0x000D38, 10, Fast
+      PixelSearch,,, 451, 831, 451, 831, 0x88C7FF, 5, Fast
     if ErrorLevel = 0
 {
   Urshi:= 1
   Schmied:= 0
   Kadala:= 0
-}else{
+} 
+}
+
+PixelSearch,,, 289, 61, 289, 61, 0x974614, 5, Fast
+    if ErrorLevel = 0
+{
+      PixelSearch,,, 456, 843, 456, 843, 0x0062AC, 5, Fast
+    if ErrorLevel = 0
+{
   Urshi:= 0
   Schmied:= 1
   Kadala:= 0
+} 
 }
-}
-PixelSearch,,, 234, 60, 234, 60, 0x651543, 10, Fast
+
+
+PixelSearch,,, 234, 60, 234, 60, 0x651543, 5, Fast
     if ErrorLevel = 0
 {
   Urshi:= 0
   Schmied:= 0
   Kadala:= 1
 }
+
 if (Urshi = 1)
 {
 mousemove, 105, 640
@@ -885,6 +921,10 @@ click left
 sleep 30
 mousemove, 274, 547
 sleep 30
+if (Emp){
+click left
+sleep 1610
+}
 click left
 sleep 1560
 send {t}
