@@ -1,8 +1,8 @@
 # Noct-Helper
 D3 clicker
-Current Version: 1.61
+Current Version: 1.62
 
-Download exe [here](https://github.com/Akayaakuma/Noct-Helper/releases/tag/1.61) 
+Download exe [here](https://github.com/Akayaakuma/Noct-Helper/releases/tag/1.62) 
 
 Join [Discord](https://discord.gg/ad4bcJZ) for support / suggestions
 
