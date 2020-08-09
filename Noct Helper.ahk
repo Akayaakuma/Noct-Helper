@@ -8,10 +8,13 @@ SendMode Input
 #Persistent
 #IfWinActive, ahk_class D3 Main Window Class
 ;------------ VERSION ------------
-Global Version := "1.61"
+Global Version := "1.62"
 CheckNewVersion()   ;Comment out or Delete this line if you dont want the Script to notify you on a new Update
 ;------------ Variable ------------
 global Hotkeys := "q|w|e|r|t|z|u|i|o|p|a|s|d|f|g|h|j|k|l|y|x|c|v|b|n|m|1|2|3|4|5|6|7|8|9|0|F1|F2|F3|F4|F5|F6|F7|F8|F9|F10|F11|F12|LButton|RButton|Space|Shift|XButton1|XButton2"
+
+global KItems := "1HWeapon||2HWeapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet"
+
 global 1HK
 global 2HK
 global 3HK
@@ -29,6 +32,7 @@ global StartStopHK
 global Alle
 global Gamble
 global Emp
+global Grac
 
 global Time1
 global Time2
@@ -77,7 +81,7 @@ IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK, D
 IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi, 1
 
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle, 0
-iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble, 1-H Weapon 
+iniRead, Grac, C:\ProgramData\settings.ini, Town, Grac, 1 
 
 iniRead, Time1, C:\ProgramData\settings.ini, Time, Time1, 100
 iniRead, Time2, C:\ProgramData\settings.ini, Time, Time2, 200
@@ -100,6 +104,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H8, 8
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot, 1
 iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp, 1
+iniRead, Select, C:\ProgramData\settings.ini, Aktiv, Select, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -121,7 +126,7 @@ IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK2, D
 IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi2, 1
 
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle2, 0
-iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble2, 1-H Weapon 
+iniRead, Grac, C:\ProgramData\settings.ini, Town, Grac2, 0 
 
 iniRead, Time1, C:\ProgramData\settings.ini, Time, Time12, 100
 iniRead, Time2, C:\ProgramData\settings.ini, Time, Time22, 200
@@ -144,6 +149,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H82, 8
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK2, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot2, 1
 iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp2, 1
+iniRead, Select, C:\ProgramData\settings.ini, Aktiv, Select2, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -165,7 +171,7 @@ IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK3, D
 IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi3, 1
 
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle3, 0
-iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble3, 1-H Weapon 
+iniRead, Grac, C:\ProgramData\settings.ini, Town, Grac3, 0 
 
 iniRead, Time1, C:\ProgramData\settings.ini, Time, Time13, 100
 iniRead, Time2, C:\ProgramData\settings.ini, Time, Time23, 200
@@ -187,7 +193,8 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H83, 8
 
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK3, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot3, 1
-iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp4, 1
+iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp3, 1
+iniRead, Select, C:\ProgramData\settings.ini, Aktiv, Select3, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -209,7 +216,7 @@ IniRead, TownHK,  C:\ProgramData\settings.ini, Town, TownHK4, D
 IniRead, Combi,  C:\ProgramData\settings.ini, Town, Combi4, 1
 
 iniRead, Alle, C:\ProgramData\settings.ini, Town, Alle4, 0
-iniRead, Gamble, C:\ProgramData\settings.ini, Town, Gamble4, 1-H Weapon 
+iniRead, Grac, C:\ProgramData\settings.ini, Town, Grac4, 0 
 
 iniRead, Time1, C:\ProgramData\settings.ini, Time, Time14, 100
 iniRead, Time2, C:\ProgramData\settings.ini, Time, Time24, 200
@@ -232,6 +239,7 @@ iniRead, H8, C:\ProgramData\settings.ini, Aktiv, H84, 8
 iniRead, PotHK, C:\ProgramData\settings.ini, Keys, PotHK4, Q
 iniRead, Pot, C:\ProgramData\settings.ini, Aktiv, Pot4, 1
 iniRead, Emp, C:\ProgramData\settings.ini, Aktiv, Emp4, 1
+iniRead, Select, C:\ProgramData\settings.ini, Aktiv, Select4, 1
 
 IniRead, EnableDisableHK,  C:\ProgramData\settings.ini, Settings, EnableDisableHK, F6
 IniRead, StartStopHK,  C:\ProgramData\settings.ini, Settings, StartStopHK, F1
@@ -249,7 +257,7 @@ HotKey, Esc, off
 Gui -MinimizeBox -MaximizeBox
 
 Gui Add, GroupBox, x5 y0 w275 h230, Skills
-Gui Add, GroupBox, x5 y230 w440 h85, Town
+Gui Add, GroupBox, x5 y230 w440 h110, Town
 Gui Add, GroupBox, x285 y137 w150 h85, Specials
 
 Gui, Add, CheckBox, x12 y16 w100 h20 vH1 Checked%H1%,  1
@@ -262,9 +270,10 @@ Gui, Add, CheckBox, x12 y189 w100 h30 vH7 Checked%H7%, Move
 Gui, Add, CheckBox, x290 y150 w100 h30 vH8 Checked%H8%, If Right then left
 
 Gui, Add, CheckBox, x227 y245 w100 h30 vAlle Checked%Alle%, add First column
+Gui, Add, CheckBox, x227 y275 w100 h30 vGrac Checked%Grac%, Gr acept
 Gui, Add, CheckBox, x12 y275 w100 h30 vPot Checked%Pot%, Auto Pot
-Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 
+Gui, Add, CheckBox, x12 y245 w100 h30 vCombi Checked%Combi%, Town Combi Key
 Gui, Add, CheckBox, x332 y245 w100 h30 vEmp  Checked%Emp%, Empowered Grift
 
 Gui Add, CheckBox, vHotKeysActive x220 y409 w120 h22 +Disabled, Hotkeys Active
@@ -279,11 +288,12 @@ Gui, Add, DropDownList, vmoveHK x112 y199 w100  , %Hotkeys%|%moveHK%||
 Gui, Add, DropDownList, vPotHK x112 y280 w100  , %Hotkeys%|%PotHK%||
 Gui, Add, DropDownList, vTownHK x112 y250 w100 , %Hotkeys%|%TownHK%||
 
-Gui, Add, Button,gSave x12 y465 w100 h30 , Save
-Gui, Add, Button,ginfo x212 y465 w100 h30 , Info
-Gui, Add, Button,gbutton1 x112 y465 w100 h30 , Reload
-Gui, Add, Button,gbutton2 x312 y465 w100 h30 , Donate
-Gui, Add, Button,gbutton3 x312 y430 w100 h30 , Discord
+Gui, Add, Button,gSave x10 y465 w65 h30 , Save
+Gui, Add, Button,ginfo x140 y465 w65 h30 , Info
+Gui, Add, Button,gbutton1 x75 y465 w65 h30 , Reload
+Gui, Add, Button,gbutton2 x335 y465 w65 h30 , Donate
+Gui, Add, Button,gbutton3 x205 y465 w65 h30 , Discord
+Gui, Add, Button,gbutton4 x270 y465 w65 h30 , Download
 
 Gui, Add, Edit, Limit5 Number vTime1 x222 y22 w40 h15 , %Time1%
 Gui, Add, Edit, Limit5 Number vTime2 x222 y52 w40 h15 , %Time2%
@@ -303,8 +313,9 @@ Gui Add, Text, x12 y411 w50 +0x200, Enable/Disable
 Gui Add, Text, x12 y436 w50 +0x200, Start/Stop
 Gui Add, DropDownList, vEnableDisableHK x92 y410 w120  , %Hotkeys%|%EnableDisableHK%||
 Gui Add, DropDownList, vStartStopHK x92 y435 w120  , %Hotkeys%|%StartStopHK%||
-;Gui, Add, DropDownList, x222 y309 w100 vGamble, 1-H Weapon||2-H Weapon|Quiver|Orb|Mojo|Phylactery|Helm|Gloves|Boots|Armor|Belt|Shoulders|Pants|Bracers|Shield|Ring|Amulet|%Gamble%||
-Gui Add, StatusBar,, by Noct| Version: %Version%
+
+
+Gui Add, StatusBar,, by Noct | Version: %Version%
 Gui Show, %gui_position% h520 w455, D3 Noct Helper
 return
 
@@ -327,6 +338,7 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, Alle
     GuiControlGet, Gamble
     GuiControlGet, Emp
+    GuiControlGet, Select
     
     GuiControlGet, Time1
     GuiControlGet, Time2
@@ -354,6 +366,10 @@ Save(CtrlHwnd, GuiEvent, EventInfo, ErrLevel := "") {
     GuiControlGet, Profil2
     GuiControlGet, Profil3
     GuiControlGet, Profil4
+    GuiControlGet, Grac
+
+    WinGetPos, Xpos, Ypos,,, D3 Noct Helper
+    IniWrite, x %Xpos% y %Ypos%, C:\ProgramData\settings.ini, window position, gui_position
 
 if (Profil1)
 {
@@ -370,6 +386,7 @@ if (Profil1)
 
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble
+    IniWrite, %Grac%, C:\ProgramData\settings.ini, Town, Grac
     
 
     IniWrite, %Time1%, C:\ProgramData\settings.ini, Time, Time1
@@ -393,6 +410,7 @@ if (Profil1)
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot
     IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp
+    IniWrite, %Select%, C:\ProgramData\settings.ini, Aktiv, Select
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -414,6 +432,7 @@ if (Profil2){
 
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle2
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble2
+    IniWrite, %Grac%, C:\ProgramData\settings.ini, Town, Grac2
 
     IniWrite, %Time1%, C:\ProgramData\settings.ini, Time, Time12
     IniWrite, %Time2%, C:\ProgramData\settings.ini, Time, Time22
@@ -436,6 +455,7 @@ if (Profil2){
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK2
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot2
     IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp2
+    IniWrite, %Select%, C:\ProgramData\settings.ini, Aktiv, Select2
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -458,6 +478,7 @@ if (Profil3)
 
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle3
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble3
+    IniWrite, %Grac%, C:\ProgramData\settings.ini, Town, Grac3
 
     IniWrite, %Time1%, C:\ProgramData\settings.ini, Time, Time13
     IniWrite, %Time2%, C:\ProgramData\settings.ini, Time, Time23
@@ -480,6 +501,7 @@ if (Profil3)
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK3
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot3
     IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp3
+    IniWrite, %Select%, C:\ProgramData\settings.ini, Aktiv, Select3
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -503,6 +525,7 @@ if (Profil4){
 
     IniWrite, %Alle%, C:\ProgramData\settings.ini, Town, Alle4
     IniWrite, %Gamble%, C:\ProgramData\settings.ini, Town, Gamble4
+    IniWrite, %Grac%, C:\ProgramData\settings.ini, Town, Grac4
 
     IniWrite, %Time1%, C:\ProgramData\settings.ini, Time, Time14
     IniWrite, %Time2%, C:\ProgramData\settings.ini, Time, Time24
@@ -525,6 +548,7 @@ if (Profil4){
     IniWrite, %PotHK%, C:\ProgramData\settings.ini, Keys, PotHK4
     IniWrite, %Pot%, C:\ProgramData\settings.ini, Aktiv, Pot4
     IniWrite, %Emp%, C:\ProgramData\settings.ini, Aktiv, Emp4
+    IniWrite, %Select%, C:\ProgramData\settings.ini, Aktiv, Select4
     
     IniWrite, %Profil1%, C:\ProgramData\settings.ini, Profil, Profil1
     IniWrite, %Profil2%, C:\ProgramData\settings.ini, Profil, Profil2
@@ -550,7 +574,7 @@ WinGetPos, Xpos, Ypos,,, D3 Noct Helper
 
 info:
 {
-    MsgBox, In Game Belegung -> Eigene Taste -> Zeit in Ms`n`nProfil wahl für verschidene configs`n`nTown combi Key:`nKadala: kauft Item auf das die maus zeigt`nSchmied macht das inventar leer Wenn Hacken gesetzt auch die 1. Spalte`nUrshi 1. gem 4 mal aufwerten+ townport`nAutopot aktiv wenn skript Enable und Checked
+    MsgBox, In Game Belegung -> Eigene Taste -> Zeit in Ms`n`nProfil wahl für verschidene configs`n`nTown combi Key:`nKadala: kauft Item auf das die maus zeigt außer Kadala Item is Checked this`nSchmied macht das inventar leer Wenn Hacken gesetzt auch die 1. Spalte`nUrshi 1. gem 4 mal aufwerten+ townport`nAutopot aktiv wenn skript Enable und Checked
     return
 }
 
@@ -579,6 +603,12 @@ button2:
 button3:
 {
     run % "https://discord.gg/ad4bcJZ"
+    return
+}
+
+button4:
+{
+    run % "https://github.com/Akayaakuma/Noct-Helper"
     return
 }
 
@@ -746,7 +776,6 @@ EnableDisable:
         GuiControl,, HotKeysActive, 0
         SoundBeep, 800, 150
         SoundBeep, 800, 150
-
         WinGetPos, Xpos, Ypos,,, D3 Noct Helper
         IniWrite, x %Xpos% y %Ypos%, C:\ProgramData\settings.ini, window position, gui_position
 
@@ -754,6 +783,7 @@ EnableDisable:
     }
     Else
     {
+        Gracc()
         HotKey, %StartStopHK%, On
         HotKey, %TownHK%, On
         AutoPot()
@@ -761,6 +791,28 @@ EnableDisable:
         SoundBeep, 800, 250  
     }
     Return
+}
+
+Gracc()
+{
+    GuiControlGet, Grac
+
+Toggler3 := !Toggler3
+if Toggler3{
+gosub, autoac
+}
+SetTimer, autoac, % Toggler3 ? 500 : "off"
+return
+
+autoac:
+if (Grac){
+PixelSearch,,, 757, 796, 757, 796, 0x8E289A, 5, Fast
+    if ErrorLevel = 0
+{
+  ControlClick, x833 y915, Diablo III,, Left , 1, NA
+}
+}
+return
 }
 
 
@@ -895,7 +947,7 @@ PixelSearch,,, 289, 61, 289, 61, 0x974614, 5, Fast
 PixelSearch,,, 289, 61, 289, 61, 0x974614, 5, Fast
     if ErrorLevel = 0
 {
-      PixelSearch,,, 456, 843, 456, 843, 0x0062AC, 5, Fast
+    PixelSearch,,, 503, 736, 503, 736, 0x000000, 5, Fast
     if ErrorLevel = 0
 {
   Urshi:= 0
@@ -938,9 +990,9 @@ sleep 1000
 Urshi = 0
 return
 }
+
 if (Kadala = 1)
 {
-        ;MsgBox 1
     Loop, 30
     {
         Send {RButton}
@@ -950,6 +1002,7 @@ if (Kadala = 1)
     Kadala:= 0
     return
 }
+
 if (Schmied = 1)
 {
   Critical
