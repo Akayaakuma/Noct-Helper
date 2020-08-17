@@ -810,6 +810,7 @@ PixelSearch,,, 757, 796, 757, 796, 0x8E289A, 5, Fast
     if ErrorLevel = 0
 {
   ControlClick, x833 y915, Diablo III,, Left , 1, NA
+  gosub StartStop
 }
 }
 return
